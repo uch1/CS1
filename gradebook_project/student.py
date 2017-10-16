@@ -29,4 +29,4 @@ class Student():
         num_of_assignments = len(list_of_assignments)
         gpa = total / num_of_assignments
         return gpa
-        #return total / len(list_of_assignments)
+        return total / len(list_of_assignments)
