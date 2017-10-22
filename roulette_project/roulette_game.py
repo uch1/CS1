@@ -54,3 +54,18 @@ def play_game():
     Determine if the user won or lost.
     Pay or deduct money from the user accordingly.
     """
+    bet_color = input("Pick a color: ")
+    number = 0
+
+    if bet_color == "red":
+        number = input("Pick a number: " + str(red) + "\n")
+    elif bet_color == "black":
+        number = input("Pick a number: " + str(black) + "\n")
+    elif bet_color == "green":
+        number = input("Pick a number: " + str(green) + "\n")
+    else:
+        print("Try agian. Pick a color on the roulette table")
+        play_game()
+
+
+play_game()
