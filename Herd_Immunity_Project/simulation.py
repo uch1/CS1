@@ -72,6 +72,7 @@ class Simulation(object):
     def __init__(self, population_size, vacc_percentage, virus_name,
                  mortality_rate, basic_repro_num, initial_infected=1):
         self.population_size = population_size
+        self.vacc_percentage = vacc_percentage
         self.population = []
         self.total_infected = 0
         self.current_infected = 0
@@ -200,13 +201,13 @@ class Simulation(object):
         # to reset self.newly_infected back to an empty list!
 
 if __name__ == "__main__":
-    params = sys.argv[1:]
+    parameters = sys.argv[1:]
     pop_size = int(params[0])
     vacc_percentage = float(params[1])
     virus_name = str(params[2])
     mortality_rate = float(params[3])
     basic_repro_num = float(params[4])
-    if len(params) == 6:
+    if len(parameters) == 6:
         initial_infected = int(params[5])
     else:
         initial_infected = 1

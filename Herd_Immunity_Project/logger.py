@@ -51,10 +51,10 @@ class Logger(object):
     '''
 
     def __init__(self, file_name):
-        self.file_name = file_name
+        #COMPLETED
         # TODO:  Finish this initialization method.  The file_name passed should be the
         # full file name of the file that the logs will be written to.
-
+        self.file_name = file_name
 
     def write_metadata(self, pop_size, vacc_percentage, virus_name, mortality_rate,
                        basic_repro_num):
@@ -68,7 +68,28 @@ class Logger(object):
         # since 'w' overwrites the file.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
+        #----------------------------------------
+        #self.file_name = input("Enter the name of the text file: ")+".txt"
+        #with open(self.file_name+".txt", mode = w) as f:
+            #metadata = f.readlines()
+            #metadata = raw_data.replace(" ", "\t")
+
+        #pop_size = int(input("Enter the population size: "))
+        #vacc_percentage = float(input("Enter the vaccination percentage: "))
+        #virus_name = input("Enter the name of the virus: ")
+        #mortality_rate = float(input("Enter the the mortality rate: "))
+        #basic_repro_num = float(input("How contagious is the virus? Enter the reproductive number: "))
+        #-----------------------------------------
+
+
+        # This will create a file and write on a new line
+        with open("{}.txt".format(self.file_name), "w") as f:
+            filename = f.write(delimiter = "\t" + "\n")
+
+        #Based on the instantiation in Simulation class,
+        # a list called params will store args
+        params = [pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num]
+
 
     def log_interaction(self, person1, person2, did_infect=None,
                         person2_vacc=None, person2_sick=None):
@@ -83,7 +104,7 @@ class Logger(object):
         # all the possible edge cases!
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
+
 
     def log_infection_survival(self, person, did_die_from_infection):
         # TODO: Finish this method.  The Simulation object should use this method to log
@@ -104,4 +125,3 @@ class Logger(object):
         # to compute these statistics for you, as a Logger's job is just to write logs!
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
