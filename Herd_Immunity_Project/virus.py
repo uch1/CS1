@@ -4,7 +4,7 @@ class Virus(object):
      to predict and test the effects of a virus on a specific population size.
      _____Attributes_____
      virus_name: String. virus name
-     mortality_rate: Float. Is fatality percentage of the virus 
+     mortality_rate: Float. Is fatality percentage of the virus
      reproductive_rate: Float. Is the rate of contagiousness of a virus
     '''
     def __init__(self, virus_name, mortality_rate, reproductive_rate):

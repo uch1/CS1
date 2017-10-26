@@ -89,7 +89,7 @@ class Logger(object):
         #Based on the instantiation in Simulation class,
         # a list called params will store args
         params = [pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num]
-
+        files.write("%s population \t %s times people got vaccinated. \t %s's mortality rate is %s  \t basic reproduction number is %s \n" % (pop_size, vacc_percentage, virus_name, mortality_rate, basic_repro_num))
 
     def log_interaction(self, person1, person2, did_infect=None,
                         person2_vacc=None, person2_sick=None):
@@ -104,7 +104,15 @@ class Logger(object):
         # all the possible edge cases!
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-
+        with open("{}.txt".format(self.file_name), a) as f:
+            if did_infect == True:
+                f.write(str(person1.id), "infected", str(person2.id))
+            elif peron2_vacc == True:
+                f.write(str(person2.id), "is vaccinated")
+            elif person2_sick == True:
+                f.write(str(person2.id),"needs to be treated ASAP!!")
+            else:
+                return "Something went wrong with the simulation"
 
     def log_infection_survival(self, person, did_die_from_infection):
         # TODO: Finish this method.  The Simulation object should use this method to log
@@ -114,7 +122,11 @@ class Logger(object):
         # on the format of the log.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
+        with open("{}.txt".format(self.file_name), a) as f:
+            if did_die_from_infection is True:
+                f.write(str(person.id),"is died from an infection")
+            else:
+                f.write(str(person.id),"wasn't infected by the virus",(self.virus_name))
 
     def log_time_step(self, time_step_number):
         # TODO: Finish this method.  This method should log when a time step ends, and a
@@ -125,3 +137,5 @@ class Logger(object):
         # to compute these statistics for you, as a Logger's job is just to write logs!
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
+        with open("{}.txt".format(self.file_name), a) as f:
+            f.write("The timer has started: {}s \n The time has ended: {}s").format(time_step_number, (time_step_number + 1))
